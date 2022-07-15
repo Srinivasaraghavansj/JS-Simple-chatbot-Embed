@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<!-- <link rel=¨stylesheet¨ type=¨text/css¨ href=¨src/style.css¨> -->
+<link href="src/style.css" rel="stylesheet">
+
+<body>
+
+    <!-- <p>Click the button to make a BUTTON element with text.</p> -->
+    <!-- <div class="w3-container w3-red" onclick="alert(1);">
+        <p>London is the capital city of England.</p>
+        <p id="demo"></p>
+
+    </div> -->
+    <!-- <button onclick="myFunction()">Try it</button> -->
+    <div id="maincontainer"></div>
+
+    <script>
+        var obj = [
+            ["What Will I learn?", "You will learn from zero to advance level of Python followed by Machine learning and computer vision With 12 real time projects with code. We have covered from scratch so no coding knowledge or any prerequisite to learn this course. First you will be provided access to our online portal where you can access our high quality studio recorded Course and learn in your own pace as per your convenience with life time access.For support:You will be added in Whatsapp group with trainers for support and also you get to attend weekly live classes on Sunday 7-8 PM where you can meet the trainers directly, we also discuss new projects in these meetings and recording will be shared if you miss the meeting"],
+            ["How can I enroll?", "https://ai2021.smartant.in Click on enroll in this link"], ["3", "We have around 146 modules and If you can spend one to two hours per day you can finish in 20 to 30 days on a average .Its self paced no restrictions  or time limit pressure"], ["4", "https://fsts.fourstepsolutions.com/users/sign_up Kindly sign up in this link and let me know I will activate the course for you"], ["5", "Your course has been activated and you can see your course in MY Dashboard  .You can start with build with python  first and then move on to AI"], ["6", "Your course has been activated sir. Kindly check your email for course access, you can also watch this video on how to access your course. https://youtu.be/c36X3swpBWQ  Kindly start with build with python first and then move on to AI"], ["7", "The fee will be Rs.699"], ["8", "https://fsts.fourstepsolutions.com/courses/aithon   https://fsts.fourstepsolutions.com/courses/python   These are the two courses which will be given for Rs.699.  You can click the course portal  and watch the previews"], ["9", "We don\'t have a consultancy .But we do get requirements from companies for people who have learnt python and ai ,at that time we refer our people.last year we referred 240 people and around 168 got placed...we just referred and they got placed through their effort..."], ["10", "The Certificate will be issued in our company name Foursteps Training Solutions Private Limited we are a private limited company registered as a training company from 2013 and you get certificate with serial number and our CIN Number you can use it where ever you need to produce a skill certificate."], ["11", "Our videos will not be long it will be practical ,short and straight to point. initially you will take time to adjust the flow of system but more you practice you will be able to learn faster. And we are there to back you up if u need help"], ["12", "Its a combination of both. U get access to our portal where u can access the course followed by weekly live classes will be on sunday 7 to 8 pm"], ["13", "Two options are available 1.To install software and learn you need minimum i3 with 4 GB Ram and 2GB Graphics card. or 2. If you have good internet you can use google colab without installing software in any PC"]];
+        // var jsondata = ['{"Site":"Stechies", "Code":"Jquery"}'];
+        // var obj = JSON.parse(jsondata);
+        // document.getElementById("demo").innerHTML = obj[0][0];
+        // console.log(obj);
+
+        hist = [];
+        function myFunction() {
+
+            // var btn = document.createElement("BUTTON");
+            // var t = document.createTextNode("CLICK ME");
+
+            // btn.setAttribute("style","color:red;font-size:23px");
+
+            // btn.appendChild(t);
+            // document.body.appendChild(btn);
+
+            // btn.setAttribute("onclick", alert("clicked"));
+
+
+            var toAdd = document.createDocumentFragment();
+            for (var i = 0; i < obj.length; i++) {
+                new_id = 'q' + i;
+                if (!hist.includes(new_id)) {
+                    var newDiv = document.createElement('div');
+                    newDiv.id = new_id;
+                    newDiv.className = 'qbox';
+                    newDiv.innerHTML = obj[i][0];
+                    newDiv.onclick = function () { action(this.id); }
+                    toAdd.appendChild(newDiv);
+                }
+            }
+            var newDiv = document.createElement('div');
+            newDiv.id = 'co';
+            newDiv.className = 'chat_options';
+            newDiv.appendChild(toAdd);
+
+            document.getElementById("maincontainer").appendChild(newDiv);
+
+        }
+        myFunction()
+
+        function action(id) {
+            // alert(id);
+            if (!hist.includes(id)) {
+                hist.push(id);
+                document.getElementById("maincontainer").innerHTML = "";
+                rebuild();
+            }
+            // history[history.length] = id;
+            // alert(hist);
+
+            function rebuild() {
+                var toAdd = document.createDocumentFragment();
+                for (var i = 0; i < hist.length; i++) {
+                    var n_id = Number(hist[i].substr(1, hist[i].length));
+                    var newDiv = document.createElement('div');
+                    newDiv.id = 'q' + n_id;
+                    newDiv.className = 'qbox';
+                    newDiv.innerHTML = obj[n_id][0];
+                    toAdd.appendChild(newDiv);
+
+                    var newDiv = document.createElement('div');
+                    newDiv.id = 'a' + n_id;
+                    newDiv.className = 'ansbox';
+                    newDiv.innerHTML = obj[n_id][1];
+                    toAdd.appendChild(newDiv);
+                }
+                document.getElementById("maincontainer").appendChild(toAdd);
+                myFunction();
+            }
+
+
+        }
+    </script>
+
+</body>
+
+</html>
